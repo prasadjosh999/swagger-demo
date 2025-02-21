@@ -1,9 +1,6 @@
 package com.spring.swagger.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -11,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 	
 
-	@GetMapping("/hello")
-	public String hello() {
+	@GetMapping("/hello/{name}")
+	public String hello(@PathVariable String name, @RequestHeader(value = "X-Channel", required = false) String channel) {
 		
-		return "Hello World";
+		return "Hello "+name;
 	}
 
 }
